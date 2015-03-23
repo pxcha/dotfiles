@@ -18,3 +18,4 @@ mpc
 ncmpcpp
 conky
 i3
+zsh
