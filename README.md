@@ -2,12 +2,9 @@ Pacha's dotfiles
 ===================
 
 ##Information
-*   WM - bspwm/i3
+*   WM - i3
 *   term emulator - urxvt
-*   font - terminus
-
-##Multihead
-Currently one bar is made per monitor, with the same information being shown on each with the exception of the workspaces, those that are shown are monitor specific.
+*   font - DejaVu Sans Mono
 
 ##TODO
 *   document things within the dotfiles themselves
@@ -23,9 +20,3 @@ this is independent per target directory. This list has only been tested with Ar
 
 ##Management
 These files are managed with GNU [stow](http://www.gnu.org/software/stow/manual/stow.html), which should be available via your package manager of choice. Stow is a symlink-farm management program. It allows for mass symlinking out of a 'master' directory(Here you can see I use the users home directory and the base('/') directory. The deploy scripts in these directories run stow with a target parent directory indicated by name. if you are reading this you are probably interested in only the dotfiles for your home directory.
-
-##Misc:
-*   The philosophy for the prompt was taken from [dcat](http://dcat.iotek.org/prompt/)
-*   Bulk of the information in the bar is gathered by [z3bra's](http://z3bra.org) example
-*   the compton setting is modified from [dkeg's](https://bitbucket.orgdkeg/current/src/) config
-

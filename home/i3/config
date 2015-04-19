@@ -1,9 +1,18 @@
 set $mod Mod4
 
-font xft:Cousine, FontAwesome 8
+#font xft:Cousine, FontAwesome 12
+#font xft:Terminus 9
+font xft:DejaVuSansMono
 
 new_window pixel 3
 focus_follows_mouse  yes
+
+# control padding
+
+bindsym $mod+ctrl+Right gaps inner current plus 5
+bindsym $mod+ctrl+Left gaps inner current minus 5
+bindsym $mod+ctrl+Up gaps outer current plus 5
+bindsym $mod+ctrl+Down gaps outer current minus 5
 
 #don't move to neighbouring screen with hjkl
 force_focus_wrapping yes
@@ -12,9 +21,9 @@ set $blue #005588
 set $gray1 #484848
 set $gray2 #333333
 
-client.focused            $gray1   $gray1   #FFFFFF   #333333
-client.focused_inactive   $gray2   $gray2   #FFFFFF   #000000
-client.unfocused          $gray2   $gray2   #FFFFFF   #000000
+client.focused            #FFFFFF  #FFFFFF   #FFFFFF   #333333
+client.focused_inactive   #DBDBDB   #DBDBDB   #DBDBDB   #000000
+client.unfocused          #DBDBDB   #DBDBDB   #DBDBDB   #000000
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -46,13 +55,15 @@ bindsym $MOD+plus scratchpad show
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus right
 
 # move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+# lock screen
+bindsym $mod+l exec xscreensaver-command -lock
 
 # split in horizontal orientation
 bindsym $mod+bar split h
@@ -112,15 +123,16 @@ bindsym $mod+Shift+8 move container to workspace $WS8
 bindsym $mod+Shift+9 move container to workspace $WS9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# float 
+# float
 for_window [class="xpad" instance="scratchpad"] move scratchpad
 for_window [class="MPlayer|Galculator|Gsimplecal|Viewnior|Alarm-clock|Skype|xpad|Java|Clamtk|Blueman-manager|Spotify|Google-musicmanager"] floating enable
-for_window [class="File-roller|Lxappearance|Nitrogen|Arandr|Caffeine|Pavucontrol|emulator64-arm|Transmission-gtk|sublime-text"] floating enable
+for_window [class="File-roller|Lxappearance|Nitrogen|Steam|Arandr|Caffeine|Pavucontrol|emulator64-arm|Transmission-gtk|sublime-text"] floating enable
 for_window [title="Preferences|Xfce-notifyd|TrueCrypt|Catfish|Google Keep|Pocket|irssi|Xarchiver"] floating enable
 for_window [title="File Operation Progress" class="Thunar"] floating enable
 for_window [title="Share a link on Twitter - Mozilla Firefox" class="Firefox"] floating enable
 for_window [title="Press This - Mozilla Firefox" class="Firefox"] floating enable
 for_window [window_role="pop-up"] floating enable,move absolute center
+for_window [title="steam"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -162,7 +174,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $HOME/bin/i3exit suspend, mode "default"
     bindsym h exec --no-startup-id $HOME/bin/i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id $HOME/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"  
+    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -193,9 +205,9 @@ bindsym XF86MonBrightnessDown exec "xbacklight -10"
 bar {
         position top
         status_command ~/.i3/conky
-        colors { 
-                statusline #AAAAAA
-                background #333333
+        colors {
+                statusline #FFFFFF
+                background #434345
                 focused_workspace $gray2 $gray2 #FFFFFF
                 inactive_workspace $gray1 $gray1 #AAAAAA
         }

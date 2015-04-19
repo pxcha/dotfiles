@@ -1,14 +1,9 @@
 base-devel
-bspwm
-sxhkd
 dmenu
-bar-aint-recursive
 rxvt-unicode
-xtitle-git
 termsyn
 ttf-dejavu
 compton
-bdf-tewi-git
 hsetroot
 vim
 bash
