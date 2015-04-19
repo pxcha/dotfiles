@@ -1,0 +1,74 @@
+!URXVT SETTINGS
+URxvt.scrollBar: false
+URxvt.internalBorder: 7
+URxvt.iso14755: false
+URxvt.cursorBlink: 0
+URxvt.cursorUnderline: 0
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
+
+!FONTS
+*font: xft:DejaVuSansMono:size=9
+*boldfont: xft:DejaVuSansMono:bold:size=9
+*italicfont: xft:DejaVuSansMono-Oblique:size=9
+*.letterSpace: -2
+!bitmap
+!*.font:      -*-terminus-medium-r-*-*-20-*-*-*-*-*-*-*
+!*.boldfont:  -*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+!*.italicfont:-*-terminus-medium-*-*-*-20-*-*-*-*-*-*-*
+!*.bolditalicfont:-*-terminus-bold-*-*-*-20-*-*-*-*-*-*-*
+
+!XFT FONTS
+Xft.antialias:  1
+Xft.autohint:   0
+Xft.dpi:        92
+Xft.hinting:    1
+Xft.hintstyle:  hintfull
+Xft.lcdfilter:  lcddefault
+Xft.rgba:       rgb
+
+!Foreground & Background
+*foreground:	#fbfbfb
+*background:	#1e1e1e
+
+!black
+*color0:  #717375
+*color8:  #717375
+
+!red
+*color1:  #FF6F67
+*color9:  #D02741
+
+!green
+*color2:  #ACFF8B
+*color10: #72C83F
+
+!yellow
+*color3:  #FFD269
+*color11: #C78A35
+
+!blue
+*color4:  #78B0FF
+*color12: #2789C2
+
+!magenta
+*color5:  #FF8BB7
+*color13: #CF4F8C
+
+!cyan
+*color6:  #67EFFF
+*color14: #00C4C3
+
+!white
+*color7:  #717375
+*color15: #717375
+
+! URL handling
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/chromium
+URxvt.matcher.button: 1
+
+! Clipboard functionality
+URxvt.perl-ext-common: default,clipboard
