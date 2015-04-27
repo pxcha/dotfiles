@@ -14,7 +14,7 @@ bindsym $mod+ctrl+Left gaps inner current minus 5
 bindsym $mod+ctrl+Up gaps outer current plus 5
 bindsym $mod+ctrl+Down gaps outer current minus 5
 
-#don't move to neighbouring screen with hjkl
+#dont move to neighbouring screen with hjkl
 force_focus_wrapping yes
 
 set $blue #005588
