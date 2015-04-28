@@ -1,130 +1,12 @@
-set $mod Mod4
+font pango:Inconsolata 8, FontAwesome 8
 
-#font xft:Cousine, FontAwesome 12
-#font xft:Terminus 9
-font xft:DejaVuSansMono
+# use these keys for focus, movement, and resize directions when reaching for
+# the arrows is not convenient
+set $up l
+set $down k
+set $left j
+set $right semicolon
 
-new_window pixel 3
-focus_follows_mouse  yes
-
-# control padding
-
-bindsym $mod+ctrl+Right gaps inner current plus 5
-bindsym $mod+ctrl+Left gaps inner current minus 5
-bindsym $mod+ctrl+Up gaps outer current plus 5
-bindsym $mod+ctrl+Down gaps outer current minus 5
-
-#dont move to neighbouring screen with hjkl
-force_focus_wrapping yes
-
-set $blue #005588
-set $gray1 #484848
-set $gray2 #333333
-
-client.focused            #FFFFFF  #FFFFFF   #FFFFFF   #333333
-client.focused_inactive   #DBDBDB   #DBDBDB   #DBDBDB   #000000
-client.unfocused          #DBDBDB   #DBDBDB   #DBDBDB   #000000
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# Back and Forth
-workspace_auto_back_and_forth yes
-
-# kill focused window
-bindsym $mod+q kill
-
-# start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --dmenu='dmenu -i -b -fn '-*-terminus-*-*-*-*-12-*-*-*-*-*-*-*''"
-bindsym $mod+d exec --no-startup-id dmenu_run -b  -fn '-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*' -nb '#111111' -nf '#555555' -sb '#111111' -sf '#aadb0f'
-
-
-## KEY BINDINGS
-bindsym $MOD+Tab focus right
-
-# SCRATCHPAD CREATE
-bindsym $MOD+SHIFT+plus move scratchpad
-
-# SCRATCHPAD SHOW
-bindsym $MOD+plus scratchpad show
-
-# HANDLE POPUPS
-#popup_during_fullscreen smart
-
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-
-# move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# lock screen
-bindsym $mod+l exec xscreensaver-command -lock
-
-# split in horizontal orientation
-bindsym $mod+bar split h
-
-# split in vertical orientation
-bindsym $mod+underscore split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
-
-# change container layout (stacked, tabbed, default)
-bindsym $mod+s layout stacking
-bindsym $mod+x layout tabbed
-bindsym $mod+z layout default
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-# focus the parent container
-bindsym $mod+a focus parent
-
-# assign workspace variables
-set $WS1 term
-set $WS2 www
-set $WS3 text
-set $WS4 media
-set $WS5 misc
-set $WS6 system
-set $WS7 office
-set $WS8 mail
-set $WS9 games
-
-# switch to workspace
-bindsym $mod+1 workspace $WS1
-bindsym $mod+2 workspace $WS2
-bindsym $mod+3 workspace $WS3
-bindsym $mod+4 workspace $WS4
-bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
-bindsym $mod+9 workspace $WS9
-bindsym $mod+0 workspace 10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $WS1
-bindsym $mod+Shift+2 move container to workspace $WS2
-bindsym $mod+Shift+3 move container to workspace $WS3
-bindsym $mod+Shift+4 move container to workspace $WS4
-bindsym $mod+Shift+5 move container to workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS8
-bindsym $mod+Shift+9 move container to workspace $WS9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# float
-for_window [class="xpad" instance="scratchpad"] move scratchpad
 for_window [class="MPlayer|Galculator|Gsimplecal|Viewnior|Alarm-clock|Skype|xpad|Java|Clamtk|Blueman-manager|Spotify|Google-musicmanager"] floating enable
 for_window [class="File-roller|Lxappearance|Nitrogen|Steam|Arandr|Caffeine|Pavucontrol|emulator64-arm|Transmission-gtk|sublime-text"] floating enable
 for_window [title="Preferences|Xfce-notifyd|TrueCrypt|Catfish|Google Keep|Pocket|irssi|Xarchiver"] floating enable
@@ -132,61 +14,25 @@ for_window [title="File Operation Progress" class="Thunar"] floating enable
 for_window [title="Share a link on Twitter - Mozilla Firefox" class="Firefox"] floating enable
 for_window [title="Press This - Mozilla Firefox" class="Firefox"] floating enable
 for_window [window_role="pop-up"] floating enable,move absolute center
-for_window [title="steam"] floating enable
+for_window [title="Steam"] floating enable
 
-# reload the configuration file
-bindsym $mod+Shift+C reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+R restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+focus_follows_mouse yes
 
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# use Mouse+Mod4 to drag floating windows to their wanted position
+floating_modifier Mod4
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym i resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+# start a terminal
+bindsym Mod4+Return exec urxvt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# kill focused window
+bindsym Mod4+q kill
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
-# Create Log out, Reboot, Poweroff bindings
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id $HOME/bin/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id $HOME/bin/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id $HOME/bin/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id $HOME/bin/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id $HOME/bin/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id $HOME/bin/i3exit shutdown, mode "default"
-
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Shift+Q mode "$mode_system"
-
-# take screenshot
-bindsym Print exec $HOME/bin/screen.sh root
-
-# key bindings
-bindsym $MOD+Return exec urxvt
+# start dmenu (a program launcher)
+bindsym Mod4+p exec dmenu_run
+# There also is the (new) i3-dmenu-desktop which only displays applications
+# shipping a .desktop file. It is a wrapper around dmenu, so you need that
+# installed.
+# bindsym Mod4+p exec --no-startup-id i3-dmenu-desktop
 
 # multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
@@ -198,20 +44,169 @@ bindsym XF86AudioStop exec "mpc stop"
 bindsym XF86AudioNext exec "mpc next"
 bindsym XF86AudioPrev exec "mpc prev"
 
-# brightness
-bindsym XF86MonBrightnessUp exec "xbacklight +10"
-bindsym XF86MonBrightnessDown exec "xbacklight -10"
 
-bar {
-        position top
-        status_command ~/.i3/conky
-        colors {
-                statusline #FFFFFF
-                background #434345
-                focused_workspace $gray2 $gray2 #FFFFFF
-                inactive_workspace $gray1 $gray1 #AAAAAA
-        }
+# change focus
+bindsym Mod4+$left focus left
+bindsym Mod4+$down focus down
+bindsym Mod4+$up focus up
+bindsym Mod4+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Left focus left
+bindsym Mod4+Down focus down
+bindsym Mod4+Up focus up
+bindsym Mod4+Right focus right
+
+# control padding
+bindsym Mod4+ctrl+Right gaps inner current plus 5
+bindsym Mod4+ctrl+Left gaps inner current minus 5
+bindsym Mod4+ctrl+Up gaps outer current plus 5
+bindsym Mod4+ctrl+Down gaps outer current minus 5
+
+# move focused window
+bindsym Mod4+Shift+$left move left
+bindsym Mod4+Shift+$down move down
+bindsym Mod4+Shift+$up move up
+bindsym Mod4+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym Mod4+Shift+Left move left
+bindsym Mod4+Shift+Down move down
+bindsym Mod4+Shift+Up move up
+bindsym Mod4+Shift+Right move right
+
+# split in horizontal orientation
+bindsym Mod4+h split h
+
+# split in vertical orientation
+bindsym Mod4+v split v
+
+# enter fullscreen mode for the focused container
+bindsym Mod4+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym Mod4+s layout stacking
+bindsym Mod4+w layout tabbed
+bindsym Mod4+e layout toggle split
+
+# toggle tiling / floating
+bindsym Mod4+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym Mod4+space focus mode_toggle
+
+# focus the parent container
+bindsym Mod4+a focus parent
+
+# focus the child container
+#bindsym Mod4+d focus child
+
+bindsym Mod4+u border none
+
+bindsym Mod4+d exec --no-startup-id dmenu_run -b -fn '-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*' -nb '#111111' -nf '#555555' -sb '#111111' -sf '#aadb0f'
+
+# move the currently focused window to the scratchpad
+bindsym Mod4+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym Mod4+minus scratchpad show
+
+set $WS1 1:
+set $WS2 2:
+set $WS3 3:
+set $WS4 4:
+set $WS5 5:
+set $WS6 6:
+set $WS7 7:
+set $WS8 8:
+set $WS9 9:
+
+# switch to workspace
+bindsym Mod4+z workspace prev
+bindsym Mod4+x workspace next
+
+bindsym Mod4+1 workspace $WS1
+bindsym Mod4+2 workspace $WS2
+bindsym Mod4+3 workspace $WS3
+bindsym Mod4+4 workspace $WS4
+bindsym Mod4+5 workspace $WS5
+bindsym Mod4+6 workspace $WS6
+bindsym Mod4+7 workspace $WS7
+bindsym Mod4+8 workspace $WS8
+bindsym Mod4+9 workspace $WS9
+bindsym Mod4+0 workspace 10
+
+# move focused container to workspace
+bindsym Mod4+Shift+1 move container to workspace $WS1
+bindsym Mod4+Shift+2 move container to workspace $WS2
+bindsym Mod4+Shift+3 move container to workspace $WS3
+bindsym Mod4+Shift+4 move container to workspace $WS4
+bindsym Mod4+Shift+5 move container to workspace $WS5
+bindsym Mod4+Shift+6 move container to workspace $WS6
+bindsym Mod4+Shift+7 move container to workspace $WS7
+bindsym Mod4+Shift+8 move container to workspace $WS8
+bindsym Mod4+Shift+9 move container to workspace $WS9
+bindsym Mod4+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym Mod4+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym Mod4+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym Mod4+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $down       resize grow height 10 px or 10 ppt
+        bindsym $up         resize shrink height 10 px or 10 ppt
+        bindsym $right      resize grow width 10 px or 10 ppt
+        # same bindings, but for the arrow keys
+        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Down        resize grow height 10 px or 10 ppt
+        bindsym Up          resize shrink height 10 px or 10 ppt
+        bindsym Right       resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
 }
 
-# autostart
-exec --no-startup-id sh ~/.start.sh
+bindsym Mod4+r mode "resize"
+
+new_window pixel 3
+new_float pixel 3
+
+# class                 border  backgr. text    indicator
+client.focused          #849492 #849492 #ffffff #849492
+client.focused_inactive #6e686f #6e686f #ffffff #484e50
+client.unfocused        #6e686f #6e686f #888888 #292d2e
+client.urgent           #e9e6e6 #BFB8B0 #ffffff #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000
+
+for_window [class='Urxvt'] floating enable
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	position top
+	status_command conky | dzen2 -x '500' -e '' -fg '#CCCACA' -bg '#242424' -ta r -fn '-*-inconsolata-*-r-normal-*-12-120-*-*-*-*-iso8859-*' -y 0 -h 20 -p 
+	tray_output none
+	font pango: Inconsolata 10
+	strip_workspace_numbers yes
+    
+	colors {
+		statusline #606060
+		background #242424
+		focused_workspace #242424 #D5D5D5 #242424 
+		inactive_workspace #242424 #282828 #CCCACA
+		urgent_workspace   #1A1A1A #664742 #1b1b1b
+        }
+}

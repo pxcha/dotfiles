@@ -1,22 +1,13 @@
 background        no
 out_to_console 	  yes
-out_to_x	  no
+out_to_x	      no
 update_interval	  2
 total_run_times	  0
-short_units	  yes
+short_units	      yes
 pad_percents	  3
 
-override_utf8_locale yes
-
 TEXT
-,[{"full_text": ${if_mpd_playing} " "},
-  {"full_text": "${mpd_artist 20} - ${mpd_title 30}"},
-  $else""},$endif
-  {"full_text": " CPU: $acpitemp°C [$cpu%] "},
-  {"full_text": " RAM: $mem "},
-  ${if_up wlp2s0}{"full_text": "  ${wireless_essid wlp2s0} [${wireless_link_qual_perc wlp2s0}%] ","color":"\#33CC99"},
-  $else${if_up ppp0}{"full_text": "  orange ","color":"\#33CC99"},
-  $else${if_up enp3s0}{"full_text": " Network: DCNet "},
-  $else{"full_text": " no connection ","color":"\#33CC99"},$endif$endif$endif
-  {"full_text": " ${time %b %d %a} ${time %l:%M:%S %p} "}
-]
+
+${if_mpd_playing} ^fg(\#CCCACA)^i(/home/post/icons/play.xbm)^fg() $mpd_artist - ${mpd_title} | \
+^fg(\#CCCACA)^i(/home/post/icons/bat.xbm)^fg() ${battery_percent BAT1}% | \
+^fg(\#CCCACA)^i(/home/post/icons/clock.xbm)^fg() ${time  %I:%M %P }
