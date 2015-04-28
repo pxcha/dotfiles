@@ -10,6 +10,7 @@ bash
 tmux
 mpd
 mpc
+dzen2
 ncmpcpp
 conky
 i3
